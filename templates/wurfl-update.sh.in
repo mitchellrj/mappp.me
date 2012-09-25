@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Downloading latest version of WURFL."
-wget -q http://downloads.sourceforge.net/project/wurfl/WURFL/latest/wurfl-latest.zip \
+wget -q http://sourceforge.net/projects/wurfl/files/WURFL/2.3.2/wurfl-2.3.2.zip/download \
      -O ${buildout:directory}/wurfl/wurfl.zip &&
 echo "Successfully downloaded to ${buildout:directory}/wurfl/wurfl.zip" &&
 echo "Compiling WURFL download to Python." &&
