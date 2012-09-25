@@ -1,6 +1,8 @@
 from threading import Lock, Thread
 import time
 
+from mappp.me.decorators import memoized
+
 
 def gc(frequency, expires, storage):
 
@@ -22,16 +24,19 @@ class BaseStorage(object):
         t.daemon = True
         t.start()
 
-    def _get_session_lock(self, session_id):
-        if session_id not in self.session_locks:
-            self.session_locks[session_id] = Lock()
-        return self.session_locks[session_id]
+    @memoized
+    def get(self, session_id):
+        raise NotImplemented
 
-    def _free_session_lock(self, session_id):
-        if session_id not in self.session_locks:
-            return
-        self.session_locks[session_id].release()
-        del self.session_locks[session_id]
+    @memoized
+    def has(self, session_id):
+        raise NotImplemented
+    
+    def _set(self, session_obj):
+        raise NotImplemented
+    
+    def _remove(self, session_obj):
+        raise NotImplemented
 
     def set(self, session):
         self._get_session_lock(session.id).acquire(True)
@@ -60,3 +65,14 @@ class BaseStorage(object):
 
         self._free_session_lock(session_id)
         self._free_session_lock(session_admin_id)
+        
+    def _get_session_lock(self, session_id):
+        if session_id not in self.session_locks:
+            self.session_locks[session_id] = Lock()
+        return self.session_locks[session_id]
+
+    def _free_session_lock(self, session_id):
+        if session_id not in self.session_locks:
+            return
+        self.session_locks[session_id].release()
+        del self.session_locks[session_id]
