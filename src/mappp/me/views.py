@@ -144,7 +144,7 @@ class SessionView(BaseView):
                   'sms_link': '',
                   #'marker_style': 'icon:' + quote(request.static_url('mappp.me:static/images/pointer-small-filled-transparent.png')),
                   'marker_style': quote('color:white|size:med'),
-                  'quoted_uri': quote(request.route_url(session=request.context.id)),
+                  'quoted_uri': quote(request.route_url('session', session=request.context.id)),
                   'zoom': zoom,
                   'map_upgrade': map_upgrade,
                   'user_is_owner': request.context.admin_id in request.existing_sessions
