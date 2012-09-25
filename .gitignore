@@ -3,6 +3,7 @@
 .pydevproject
 .settings
 cache
+etc
 eggs
 var
 parts
