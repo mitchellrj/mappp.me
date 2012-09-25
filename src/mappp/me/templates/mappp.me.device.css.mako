@@ -24,7 +24,7 @@ ul.menu,
     height: ${min(int(fixed_width * 0.8), 200)}px;
 }
 
-%if device.pointing_method in ('stylus', 'touchscreen'): #includes desktops
+%if device.pointing_method in ('mouse', 'stylus', 'touchscreen'): #includes desktops
 #error,
 .button {
 	display: block;
