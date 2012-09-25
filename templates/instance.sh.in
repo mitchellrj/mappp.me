@@ -1,0 +1,18 @@
+#!/bin/bash
+case "$1" in
+  start)
+    ${buildout:bin-directory}/paster serve --daemon --pid-file=${buildout:directory}/mappp.me.pid --log-file=${buildout:directory}/log/mappp.me.log ${paster-conf:output} start
+    ;;
+  stop)
+    ${buildout:bin-directory}/paster serve --daemon --pid-file=${buildout:directory}/mappp.me.pid --log-file=${buildout:directory}/log/mappp.me.log  ${paster-conf:output} stop
+    ;;
+  restart)
+    ${buildout:bin-directory}/paster serve  --daemon --pid-file=${buildout:directory}/mappp.me.pid --log-file=${buildout:directory}/log/mappp.me.log ${paster-conf:output} restart
+    ;;
+  fg)
+    ${buildout:bin-directory}/paster serve ${paster-conf:output}
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|restart|fg}"
+    exit 1
+esac

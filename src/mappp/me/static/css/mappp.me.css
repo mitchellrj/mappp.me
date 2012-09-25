@@ -1,0 +1,176 @@
+body {
+	margin: 0 auto;
+    font-family: Verdana, Helvetica, sans;
+    font-size: 10pt;
+}
+
+#header {
+	text-align: center;
+	margin: 1em auto;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 1em;
+}
+
+#content {
+	margin: 1em auto 0 auto;
+	text-align: center;
+}
+
+p {
+	margin-top: 1em;
+}
+table {
+	margin: 1em auto;
+	border-collapse: collapse;
+}
+tr {
+	border-bottom: 1px solid #ccc;
+}
+tr.last {
+	border: 0;
+}
+th, td {
+	padding: 0.5em;
+}
+
+iframe {
+	margin: 1em auto;
+}
+.share-link {
+	border-bottom: 1px solid #ccc;
+	padding-top: 0.5em;
+}
+.share-link input, .share-link input {
+	width: 50%;
+}
+.share-link label {
+	display: inline-block;
+	width: 6em;
+	text-align: left;
+}
+.last {
+	border: 0;
+}
+th {
+	text-align: left;
+	font-weight: bold;
+}
+td {
+	text-align: right;
+}
+
+body.text #content {
+	text-align: justify;
+	line-height: 1.4em;
+}
+
+#footer {
+	margin: 1em auto;
+	border-top: solid 1px #ccc;
+	padding-top: 1em;
+	text-align: center;
+	color: #aaa;
+}
+
+h2 {
+	margin-top: 1ex;
+	font-size: 150%;
+}
+
+h3 {
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	font-size: 120%;
+}
+
+p {
+	margin-bottom: 1em;
+}
+
+body.front p {
+	font-size: 110%;
+	line-height: 1.5em;
+	margin-bottom: 3em;
+}
+
+ul {
+	padding-left: 1em;
+	list-style: disc;
+}
+
+ul li {
+	margin: 0.5em auto 0 auto;
+}
+
+#footer ul,
+ul.menu {
+	margin: 2em auto 3em auto;
+	padding: 0;
+    list-style: none;
+}
+
+a, a:visited, a:active {
+	text-decoration: none;
+	color: #46d;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+form {
+	margin-top: 1em;
+}
+#update-interval-form {
+	display: none;
+}
+#update-interval-form label {
+	display: block;
+}
+#update-interval {
+	width: 4em;
+	text-align: right;
+}
+#social-networks .social {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0.5em;
+}
+.twitter-share-button {
+	display: inline-block;
+	height: 20px;
+	width: 55px;
+	margin-top: 1em;
+	background: transparent url(/static/images/tweet.png);
+	background-repeat: none;
+	background-position-y: 0px;
+}
+.twitter-share-button:hover {
+	background-position-y: -21px;
+}
+.twitter-share-button:active {
+	background-position-y: -42px;
+}
+.twitter-share-button span{
+	position: absolute;
+	left: -999em;
+}
+.gplus {
+	padding-top: 1em;
+}
+.help {
+	text-align: center;
+	font-style: italic;
+	font-size: 90%;
+}
+#map {
+	margin: 1em 0;
+}
+
+.js-only {
+	display: none;
+}
+
+.answer {
+	font-style: italic;
+}

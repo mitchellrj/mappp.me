@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  metal:define-macro="master"
+  tal:define="page_width min(request.device.resolution_width,request.device.max_image_width);
+              image_size (page_width>1024 and '') or
+                         (page_width>512 and 'medium-') or
+                         (page_width>256 and 'small-') or
+                         'tiny-';
+              image_base request.static_url('mappp.me:static/images');
+              app_url request.application_url">
+<head>
+  <meta charset="utf-8" />
+  <title>mappp.me</title>
+  <meta tal:condition="request.device.mobileoptimized"
+        name="MobileOptimized" content="width" />
+  <meta tal:condition="request.device.handheldfriendly"
+        name="HandheldFriendly" content="true" />
+  <tal:viewport tal:condition="request.device.viewport_supported">
+  <meta tal:condition="request.device.viewport_width=='device_width_token'"
+        name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <meta tal:condition="request.device.viewport_width=='width_equals_resolution_width'"
+        name="viewport"
+        content="width=${request.device.resolution_width}, initial-scale=1.0" />
+  <meta tal:condition="request.device.viewport_width=='width_equals_max_image_width'"
+        name="viewport"
+        content="width=${request.device.max_image_width}, initial-scale=1.0" />
+  </tal:viewport>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+
+  <meta name="description" content="Free, anonymous location sharing. No apps, no registration, no hassle." />
+  <metal:slot define-slot="head_meta" />
+
+  <link rel="shortcut icon" href="${image_base}/favicon.ico" />
+  <link rel="about" href="${app_url}/about" />
+  <link rel="stylesheet" href="${request.static_url('mappp.me:static/css/reset.css')}" type="text/css" />
+  <link rel="stylesheet" href="${request.static_url('mappp.me:static/css/mappp.me.css')}" type="text/css" />
+  <link rel="stylesheet" href="${request.static_url('mappp.me:static/css/mappp.me.screen.css')}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="${request.static_url('mappp.me:static/css/mappp.me.mobile.css')}" type="text/css" media="handheld" />
+  <link rel="stylesheet" href="${app_url}/mappp.me.device.css" type="text/css" />
+  <metal:slot define-slot="head_css" />
+  <metal:slot define-slot="head_js" />
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25462303-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+<body tal:attributes="class bodyclass|nothing">
+  <div id="header">
+    <h1>
+      <a href="${app_url}">
+        <img src="${image_base}/logo-${image_size}transparent.png" alt="mappp.me" />
+      </a>
+    </h1>
+    <metal:slot define-slot="inside-header" />
+  </div>
+  <div id="content">
+    <metal:slot define-slot="content" />
+  </div>
+  <div id="footer">
+    <ul>
+      <li><a rel="help" href="${app_url}/about">About mappp.me</a></li>
+      <li><a rel="privacy" href="${app_url}/privacy">Privacy policy</a></li>
+    </ul>
+  </div>
+</body>
+</html>

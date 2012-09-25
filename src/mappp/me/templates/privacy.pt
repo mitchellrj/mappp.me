@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    tal:omit-tag=""
+    tal:define="bodyclass string:text">
+
+<tal:wrapper metal:use-macro="main.macros['master']">
+<head>
+  <title></title>
+</head>
+<body>
+  <metal:content fill-slot="inside-header">
+    <h2>Your privacy</h2>
+  </metal:content>
+  <metal:content fill-slot="content">
+    <h3>Information we collect and how we us it</h3>
+    <p>We may collect the following types of information:</p>
+    <ul>
+      <li><strong>Cookies</strong> &#8212; When you use mappp.me, we send one
+          or more
+          <dfn><a href="http://www.google.com/intl/en/privacy/faq.html#toc-terms-cookie">cookies</a></dfn>
+          to your computer or other device. We use cookies to store
+          identifiers of any mappps you have created which are still valid and
+          your preferences for map image zoom level.
+      </li>
+      <li><strong>Log information</strong> &#8212; When you visit mappp.me,
+          via a browser, application or other client our servers automatically
+          record certain information. These
+          <dfn><a href="http://www.google.com/intl/en/privacy/faq.html#toc-terms-server-logs">server logs</a></dfn>
+          may include information such as your web request, your interaction
+          with a service, Internet Protocol address, browser type, browser
+          language, the date and time of your request and one or more cookies
+          that may uniquely identify your browser.
+      </li>
+      <li><strong>User communications</strong> &#8212; When you send email or
+          other communications to mappp.me, we may retain those communications
+          in order to process your inquiries, respond to your requests and
+          improve our services.
+      </li>
+      <li><strong>Location data</strong> &#8212; If you use mappp.me, we may
+          receive information about your actual location (such as GPS signals
+          sent by a mobile device) or information that can be used to
+          approximate a location (such as a cell ID).
+
+          <p>This information is stored for up to 30 minutes. You may choose
+             to delete this data at
+             any time be choosing 'Delete' from the administration page of your
+             mappp.
+          </p>
+          <p>Any location you provide to us is freely accessible to the
+             public, though no personally identifiable information is provided
+             with it. This means that anyone might access the location whether
+             you send them a link to it or not. This is a feature of this
+             service and the location is in no way associated to you
+             personally to any other user of this service.
+          </p>
+      </li>
+    </ul>
+    <h3>Choices</h3>
+    <p>Most browsers are initially set up to accept cookies, but you can reset
+       your browser to refuse all cookies or to indicate when a cookie is
+       being sent. However, some mappp.me features and services may not
+       function properly if your cookies are disabled.
+    </p>
+    <h3>Information sharing</h3>
+    <p>mappp.me only shares personal information with other companies or
+       individuals in the following limited circumstances:
+    </p>
+    <ul>
+      <li>We have a good faith belief that access, use, preservation or
+          disclosure of such information is reasonably necessary to (a)
+          satisfy any applicable law, regulation, legal process or
+          enforceable governmental request, or (b) detect, prevent, or
+          otherwise address fraud, security or technical issues.
+      </li>
+    </ul>
+    <p>If mappp.me becomes involved in a merger, acquisition, or any form of
+       sale of some or all of its assets, we will ensure the confidentiality
+       of any personal information involved in such transactions and provide
+       notice before personal information is transferred and becomes subject
+       to a different privacy policy.
+    </p>
+    <h3>Information Security</h3>
+    <p>We take appropriate security measures to protect against unauthorized
+       access to or unauthorized alteration, disclosure or destruction of
+       data. These include internal reviews of our data collection, storage
+       and processing practices and security measures, including appropriate
+       encryption and other measures to guard against unauthorized access to
+       systems where we store personal data.
+    </p>
+    <h3>Changes to this Privacy Policy</h3>
+    <p>Please note that this Privacy Policy may change from time to time. We
+       will not reduce your rights under this Privacy Policy without your
+       explicit consent. We will post any Privacy Policy changes on this page
+       and, if the changes are significant, we will provide a more prominent
+       notice. We will also keep prior versions of this Privacy Policy in an
+       archive for your review.
+    </p>
+    <h3>Our service providers</h3>
+    <p>Services providers we use to bring you this website may also have
+       access to the information you provide us with and have privacy policies
+       of their own which apply. These are listed below.
+    </p>
+    <ul>
+      <li><a href="http://www.google.com/intl/en/privacy/privacy-policy.html">Google Privacy Policy</a>
+    </ul>
+  </metal:content>
+</body>
+</tal:wrapper>
+</html>

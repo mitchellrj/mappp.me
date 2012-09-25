@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "Downloading latest version of WURFL."
+wget -q http://downloads.sourceforge.net/project/wurfl/WURFL/latest/wurfl-latest.zip \
+     -O ${buildout:directory}/wurfl/wurfl.zip &&
+echo "Successfully downloaded to ${buildout:directory}/wurfl/wurfl.zip" &&
+echo "Compiling WURFL download to Python." &&
+${buildout:bin-directory}/${pyramid:interpreter} \
+  ${buildout:bin-directory}/wurfl2python \
+    ${buildout:directory}/wurfl/wurfl.zip \
+    -o ${buildout:directory}/wurfl/wurfl2.py &&
+echo "Successfully compiled WURFL data to Python." &&
+echo "Moving new data into place." &&
+mv ${buildout:directory}/wurfl/wurfl2.py ${buildout:directory}/wurfl/wurfl.py
+if [ "$?" -gt "0" ]
+then
+  echo "FAIL"
+  exit 1
+else
+  echo "SUCCESS"
+fi

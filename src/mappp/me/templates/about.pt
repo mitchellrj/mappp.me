@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    tal:omit-tag=""
+    tal:define="bodyclass string:text">
+
+<tal:wrapper metal:use-macro="main.macros['master']">
+<head>
+  <title></title>
+</head>
+<body>
+  <metal:content fill-slot="inside-header">
+    <h2>About mappp.me</h2>
+  </metal:content>
+  <metal:content fill-slot="content">
+    <p>mappp.me is an anonymous location-sharing service, designed to work
+       with the latest smartphones as well as older devices. You can quickly
+       create a short link to a map of your location and update it whenever
+       you wish. Once you're done with it, don't worry, it doesn't live on the
+       internet forever, it will disappear after 30 minutes of inactivity.
+    </p>
+    <h3>Questions and answers</h3>
+    <ul>
+      <li>
+        <p class="question">
+          I get a warning about a certificate or am told it is not valid for
+          this site. What does this mean?
+        </p>
+        <p class="answer">
+          This website uses <acronym title="Secure Socket Layer">SSL</acronym>
+          for every page it loads. This encrypts the page and the information
+          you send to the site so that other people can't sneak a look at it
+          while it's travelling through the internet. Some older phones and
+          other devices do not support SSL very well. Your information will
+          still be encrypted, but you may get an annoying warning message like
+          this.
+        </p>
+        <p class="answer">
+          On some devices, you may be able to install a new "CA Certificate"
+          which will make the warning go away. You can download the required
+          certificate file
+          <a href="http://crt.gandi.net/GandiStandardSSLCA.crt" title="Gandi CA Certificate file">here</a>.
+          Installation procedure for your device will vary.
+        </p>
+      </li>
+      <li>
+        <p class="question">
+          What is this for?
+        </p>
+        <p class="answer">
+          It was initially created for me to share my location on long drives,
+          with someone who had a very basic phone. You could also use it to
+          get people to follow you on a bar crawl, explain to friends where
+          you are quickly and simply, or organise a flash mob!
+        </p>
+      </li>
+      <li>
+        <p class="question">
+          Why the 30 minute timeout?
+        </p>
+        <p class="answer">
+          Locations of people are naturally transient things, in the majority
+          of use cases, people don't need to know you were eating a burrito on
+          the high street at 3pm last Tuesday. There are also privacy
+          concerns: if you lose the admin URL and you want to delete your
+          mappp, you can't. This timeout means that the past stays in the past
+          and any mistakes are quickly forgotten.
+        </p>
+      </li>
+      <li>
+        <p class="question">
+          Who made this?
+        </p>
+        <p class="answer">
+          The rather dashing
+          <a href="http://twitter.com/mitchellrj">Richard Mitchell</a>.
+        </p>
+      </li>
+      <li>
+        <p class="question">
+          Can you make it do this other cool thing? Why doesn't work on my
+          Nokia 3310?
+        </p>
+        <p class="answer">
+          Suggestions and feedback are most welcome. You can tweet me at
+          <a href="http://twitter.com/mitchellrj">@mitchellrj</a>, or if you
+          prefer to be more verbose, email
+          <a href="mailto:mitchell@awesomeco.de">mitchell@awesomeco.de</a>.
+          <!-- Email obfuscation is pointless with spam filters as good as
+               Google's.
+           -->
+        </p>
+      </li>
+    </ul>
+  </metal:content>
+</body>
+</tal:wrapper>
+</html>
