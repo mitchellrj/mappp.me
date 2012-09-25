@@ -30,12 +30,19 @@ class BaseView(object):
         self.request = request
 
     def __call__(self, *args, **kwargs):
+        page_width = min(self.request.device.resolution_width,
+                         self.request.device.max_image_width)
         values = dict(
             main = get_renderer('templates/master.pt').implementation(),
             context = getattr(self.request, 'context', None),
             request = self.request,
             js_api_key = settings.get('mappp.me.google.js_api_key', ''),
-            maps_api_key = settings.get('mappp.me.gmaps.api_key', '')
+            maps_api_key = settings.get('mappp.me.gmaps.api_key', ''),
+            page_width = page_width,
+            image_size = (page_width>1024 and '') or
+                         (page_width>512 and 'medium-') or
+                         (page_width>256 and 'small-') or
+                         'tiny-'
         )
         values.update(self.populate(self.request))
         exception = getattr(self.request, 'exception', None)
