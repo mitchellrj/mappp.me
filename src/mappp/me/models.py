@@ -5,6 +5,7 @@ from mappp.me.platform import get_platform
 
 
 class DefaultIdFactory(object):
+    """Default ID generator for sessions."""
 
     # alnum with lookalike characters removed
     chars = 'abcdefghjkmnopqrstuvwxzyABCDEFGHJKLMNPQRSTUVWXYZ23456789-_'
@@ -27,6 +28,9 @@ class DefaultIdFactory(object):
 
 
 class CustomTZ(datetime.tzinfo):
+    """Customizable timezone object to allow us to set the timezone
+       according to the user's browser, rather than system time.
+    """
 
     def __init__(self, offset=None):
         self.offset = datetime.timedelta(minutes=(offset or 0) * -1)
@@ -61,6 +65,7 @@ class CustomTZ(datetime.tzinfo):
 
 
 class BaseSession(object):
+    """Basic session object. Extended as necessary by the platform."""
 
     def __init__(self, longitude, latitude, tz=None):
         storage = get_platform().get_storage()
@@ -73,10 +78,12 @@ class BaseSession(object):
 
     @property
     def id(self):
+        """Ordinary, user-accessible ID."""
         return self._id
 
     @property
     def admin_id(self):
+        """ID which when accessed, provides admin functionality."""
         return self._admin_id
 
     @property

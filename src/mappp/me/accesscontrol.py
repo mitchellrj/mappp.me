@@ -10,6 +10,8 @@ _ua_device_cache = get_platform().ua_device_cache
 
 
 def on_newrequest(event):
+    """Fix the https bug in Pyramid / Paste."""
+    
     if 'HTTP_X_VHM_ROOT' in event.request.environ:
         event.request.environ['wsgi.url_scheme'] = 'https'
 
@@ -18,6 +20,10 @@ class EnhancedRequest(Request):
 
     @reify
     def device(self):
+        """Look up the device profile based on the UA and cache it on
+           the request object.
+        """
+        
         global _ua_device_cache
         ua = unicode(self.user_agent)
 
@@ -33,6 +39,10 @@ class EnhancedRequest(Request):
 
     @reify
     def supports_javascript(self):
+        """Simple test if the device supports all the JavaScript
+           features we require.
+        """
+        
         device = self.device
         return device.ajax_support_javascript and \
                device.ajax_support_getelementbyid and \
@@ -43,6 +53,10 @@ class EnhancedRequest(Request):
 
     @reify
     def existing_sessions(self):
+        """Get a list of mappps that are currently valid for this
+           browser session.
+        """
+        
         existing_sessions = self.cookies.get('mappp')
         if existing_sessions:
             sessions = []

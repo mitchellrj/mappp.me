@@ -2,7 +2,6 @@ _platform = None
 
 
 def get_platform():
-    global _platform
     if not _platform:
         raise RuntimeError("Platform not initialized.")
 
@@ -10,6 +9,10 @@ def get_platform():
 
 
 def set_platform(id_):
+    """Sets the platform to be whatever submodule of this is specified
+       by the given id.
+    """
+    
     global _platform
     _platform = None
     try:

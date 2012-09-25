@@ -1,14 +1,11 @@
-'''
-Created on Aug 15, 2011
-
-@author: mitch
-'''
 from pyramid.exceptions import NotFound
 from pyramid.security import Allow, Everyone
 
 from mappp.me.platform import get_platform
 
+
 class RootFactory(object):
+    """The root context."""
     __acl__ = [ (Allow, Everyone, 'view'), ]
 
     def __init__(self, request):
@@ -16,6 +13,8 @@ class RootFactory(object):
 
 
 def SessionFactory(request):
+    """Loads a session as the context and applies permissions."""
+    
     acl = [(Allow, Everyone, 'view')]
 
     session_id = request.matchdict.get('session')

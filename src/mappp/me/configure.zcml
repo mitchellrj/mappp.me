@@ -15,6 +15,9 @@
     name="robots"
    />
 
+  <!-- A device-specific CSS file, so we don't have to rely on advanced
+       media queries.
+  -->
   <view route_name="device_css"
     renderer="mappp.me.device.css.mako"
     view=".views.DeviceCss"
@@ -90,6 +93,7 @@
     factory=".context.SessionFactory"
    />
 
+  <!-- Error pages -->
   <view
     view=".views.BaseView"
     renderer="templates/error/404.pt"

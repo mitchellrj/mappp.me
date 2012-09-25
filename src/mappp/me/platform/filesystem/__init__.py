@@ -39,14 +39,16 @@ class MemoryLimitedCache(dict):
         return dict.__delitem__(self, key)
 
 
+# memcache class
 memory_cache = MemoryLimitedCache
+# 10MB cache for Wurfl device records
 ua_device_cache = MemoryLimitedCache(max_bytes=10*1024*1024)
 _storage = None
+# Marker object
 default = object()
 
 
 def get_storage():
-    global _storage
     if not _storage:
         raise RuntimeError("Storage not initialized.")
     return _storage
@@ -63,6 +65,7 @@ def init_storage(directory, expires=1800, gc_frequency=300,
 
 
 def init_platform_from_settings(settings):
+    """Called by the app initializer in the root of the package."""
 
     init_storage(settings['mappp.me.storage.location'],
                  expires=int(settings['mappp.me.storage.expires']),

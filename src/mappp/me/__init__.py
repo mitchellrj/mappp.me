@@ -7,7 +7,12 @@ from pyramid.config import Configurator
 import pyramid_beaker
 
 
+# Global settings, a la Django :-/
+Settings = {}
+
+
 def wurfl_monitor():
+    """A daemon thread to reload the wurfl file if it changes on disk."""
     last_mtime = time.time()
     while 1:
         try:
@@ -23,20 +28,18 @@ def wurfl_monitor():
         time.sleep(600)
 
 
-Settings = {}
-
-
 def main(global_config, **settings):
-    """ This function returns a Pyramid WSGI application.
-    """
+    """This function configures and returns a WSGI application."""
 
     global Settings
     Settings = settings
-    config = Configurator(settings=settings,
+    config = Configurator(
+        settings=settings,
         root_factory='mappp.me.context.RootFactory',)
     config.include('pyramid_zcml')
     config.load_zcml('configure.zcml')
 
+    # set up storage
     from mappp.me.platform import set_platform
     platform = set_platform(settings.get('mappp.me.platform', 'filesystem'))
     platform.init_platform_from_settings(settings)
@@ -47,6 +50,7 @@ def main(global_config, **settings):
     config.set_request_factory(EnhancedRequest)
     config.add_subscriber(on_newrequest, 'pyramid.events.NewRequest')
 
+    # start up our wurfl monitor
     t = threading.Thread(target=wurfl_monitor, name="mappp.me.wurfl.updater")
     t.daemon = True
     t.start()

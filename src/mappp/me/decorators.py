@@ -8,16 +8,19 @@ from mappp.me.platform import get_platform
 
 # http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize
 class memoized(object):
-    """Decorator that caches a function's return value each time it is called.
-    If called later with the same arguments, the cached value is returned, and
-    not re-evaluated.
+    """Decorator that caches a function's return value each time it is
+       called. If called later with the same arguments, the cached
+       value is returned, and not re-evaluated.
     """
+    
     def __init__(self, keyer=None, max_cache_bytes=None):
         self.cache_size = max_cache_bytes or sys.maxint
         self.keyer = None
 
     @reify
     def cache(self):
+        """Get the platform-specific cache."""
+        
         # Defer creation of cache so we may create the platform first
         return get_platform().memory_cache(max_bytes=self.cache_size)
 
