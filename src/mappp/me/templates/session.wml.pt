@@ -12,11 +12,16 @@
       <b>mappp.me</b>
     </p>
     <p>
-      <img width="${page_width}" height="${page_width}" src="https://maps.googleapis.com/maps/api/staticmap?center=${context.latitude},${context.longitude}&amp;zoom=${zoom}&amp;size=${page_width}x${page_width}&amp;markers=${marker_style}%7C${context.latitude},${context.longitude}&amp;sensor=false" alt="Current location"/>
+      <img width="${page_width}"
+           height="${page_width}"
+           src="https://maps.googleapis.com/maps/api/staticmap?center=${context.latitude},${context.longitude}&amp;zoom=${zoom}&amp;size=${page_width}x${page_width}&amp;markers=${marker_style}%7C${context.latitude},${context.longitude}&amp;sensor=false"
+           alt="Current location"/>
       <br/>
-      <a href="${app_url}${request.environ.get('PATH_INFO')}?zoom=${zoom - 1}" accesskey="1">Zoom Out</a>
+      <a href="${app_url}${request.environ.get('PATH_INFO')}?zoom=${zoom - 1}"
+         accesskey="1">Zoom Out</a>
       <br/>
-      <a tal:condition="zoom>1" href="${app_url}${request.environ.get('PATH_INFO')}?zoom=${zoom + 1}" accesskey="1">Zoom In</a>
+      <a tal:condition="zoom>1" href="${app_url}${request.environ.get('PATH_INFO')}?zoom=${zoom + 1}"
+         accesskey="2">Zoom In</a>
     </p>
     <p>
       <table columns="2">

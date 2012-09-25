@@ -108,7 +108,7 @@ class SessionView(BaseView):
                                      request.context.id)
             raise HTTPFound(location=wml_uri)
 
-        is_owner = bool(has_permission('owner', request.context, request))
+        is_owner_view = bool(has_permission('owner', request.context, request))
 
         today = datetime.datetime.now(tz=request.context.tz).replace(hour=0, minute=0, second=0, microsecond=0)
         created = request.context.created
@@ -137,7 +137,7 @@ class SessionView(BaseView):
 #                          not request.device.mobile_browser
 #                      )
 
-        result = {'is_owner': is_owner,
+        result = {'is_owner_view': is_owner_view,
                   'latitude': request.context.latitude,
                   'longitude': request.context.longitude,
                   'created': created_text,
@@ -146,7 +146,8 @@ class SessionView(BaseView):
                   'marker_style': quote('color:white|size:med'),
                   'quoted_uri': quote('%s%s' % (request.application_url, request.path)),
                   'zoom': zoom,
-                  'map_upgrade': map_upgrade
+                  'map_upgrade': map_upgrade,
+                  'user_is_owner': request.context.admin_id in request.existing_sessions
                   }
 
         send_string = request.device.xhtml_send_sms_string
@@ -161,7 +162,7 @@ class SessionView(BaseView):
                                                            (request.application_url,
                                                             request.context.id)))
 
-        if request.method=='POST' and is_owner:
+        if request.method=='POST' and is_owner_view:
 
             long = float(request.params.get('longitude'))
             lat = float(request.params.get('latitude'))
@@ -181,7 +182,7 @@ class SessionView(BaseView):
         request.response.last_modified = last_updated
         request.response.cache_control = 'no-cache'
 
-        if request.method=='POST' and is_owner:
+        if request.method=='POST' and is_owner_view:
 
             result['response'] = render_to_response('json', result,
                                                     request=request)

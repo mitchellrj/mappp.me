@@ -41,7 +41,9 @@
           On some devices, you may be able to install a new "CA Certificate"
           which will make the warning go away. You can download the required
           certificate file
-          <a href="http://crt.gandi.net/GandiStandardSSLCA.crt" title="Gandi CA Certificate file">here</a>.
+          <a href="http://crt.gandi.net/GandiStandardSSLCA.crt"
+             title="Gandi CA Certificate file">
+            here</a>.
           Installation procedure for your device will vary.
         </p>
       </li>
