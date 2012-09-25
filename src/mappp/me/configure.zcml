@@ -98,7 +98,7 @@
   <view
     view=".views.BaseView"
     renderer="templates/error/500.pt"
-    context="pyramid.httpexceptions.HTTPInternalServerError"
+    context="Exception"
     />
 
 </configure>
