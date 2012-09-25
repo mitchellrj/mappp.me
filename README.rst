@@ -49,12 +49,16 @@ To these ends, the following design decisions were made:
  
 Building
 ========
+
 ::
+  
   virtualenv -p python2.7 --no-site-packages .
   bin/python bootstrap.py -c development.cfg
   bin/buildout -c development.cfg
   
 Running
 =======
+
 ::
+  
   bin/instance start
