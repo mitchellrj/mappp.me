@@ -35,6 +35,7 @@ ul.menu,
     background-color: #cdf;
     text-align: center;
     color: #46d;
+    border-radius:1em;
     -webkit-border-radius:1em;
     -moz-border-radius:1em;
 }
