@@ -71,11 +71,9 @@
       </form>
     </div>
 
-    <div style="width:${int(page_width*0.8)}px;height:20em;" id="map">
+    <div id="map">
       <div tal:omit-tag="not:request.supports_javascript">
-        <img width="${int(page_width*0.8)}"
-             height="${min(int(page_width*0.8), 200)}"
-             alt="Current location"
+        <img alt="Current location"
              src="https://maps.googleapis.com/maps/api/staticmap?center=${context.latitude},${context.longitude}&amp;zoom=${zoom}&amp;size=${int(page_width*0.8)}x${min(int(page_width*0.8), 200)}&amp;markers=${marker_style}%7C${context.latitude},${context.longitude}&amp;sensor=false"/>
         <a class="button medium"
            href="${app_url}${request.environ.get('PATH_INFO')}?zoom=${zoom - 1}"

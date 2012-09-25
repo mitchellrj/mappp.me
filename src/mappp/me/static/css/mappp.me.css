@@ -165,6 +165,7 @@ form {
 }
 #map {
 	margin: 1em 0;
+	height: 20em;
 }
 
 .js-only {

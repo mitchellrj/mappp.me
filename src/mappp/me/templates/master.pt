@@ -3,12 +3,7 @@
   xmlns:metal="http://xml.zope.org/namespaces/metal"
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   metal:define-macro="master"
-  tal:define="page_width min(request.device.resolution_width,request.device.max_image_width);
-              image_size (page_width>1024 and '') or
-                         (page_width>512 and 'medium-') or
-                         (page_width>256 and 'small-') or
-                         'tiny-';
-              image_base request.static_url('mappp.me:static/images');
+  tal:define="image_base request.static_url('mappp.me:static/images');
               app_url request.application_url">
 <head>
   <meta charset="utf-8" />

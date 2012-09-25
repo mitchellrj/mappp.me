@@ -14,11 +14,14 @@ ul {
 	width: ${int(fixed_width * 0.8 * 0.95)}px;
 	margin-left: ${int(fixed_width * 0.8 * 0.05)}px;
 }
-ul.menu {
-    width: ${int(fixed_width * 0.8)}px;
-}
-#content {
+ul.menu,
+#content,
+#map,
+#map img {
 	width: ${int(fixed_width * 0.8)}px;
+}
+#map img {
+    height: ${min(int(fixed_width * 0.8), 200)}px;
 }
 
 %if device.pointing_method in ('stylus', 'touchscreen'): #includes desktops
