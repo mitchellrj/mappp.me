@@ -15,7 +15,7 @@ def gc(frequency, expires, storage):
 
 
 class BaseStorage(object):
-    def __init__(self, location, expires, gc_frequency, id_factory):
+    def __init__(self, expires, gc_frequency, id_factory):
         self.session_locks = {}
         self.id_factory = id_factory
 

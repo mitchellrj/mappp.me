@@ -9,7 +9,7 @@ class SessionStorage(BaseStorage):
 
     def __init__(self, directory, expires, gc_frequency, id_factory):
         self.directory = directory
-        super(SessionStorage, self).__init__(directory, expires, gc_frequency, id_factory)
+        super(SessionStorage, self).__init__(expires, gc_frequency, id_factory)
 
     def purge_before(self, horizon):
         for id_ in self.list_all_ids():
