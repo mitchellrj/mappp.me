@@ -121,7 +121,6 @@
           <a href="${app_url}/${context.id}">View link</a>
         </label>
         <input type="text"
-               readonly="readonly"
                name="view-link"
                id="view-link"
                value="${app_url}/${context.id}" />
@@ -134,7 +133,6 @@
           <a href="${app_url}/${context.admin_id}">Admin link</a>
         </label>
         <input type="text"
-               readonly="readonly"
                name="admin-link"
                id="admin-link"
                value="${app_url}/${context.admin_id}" />
