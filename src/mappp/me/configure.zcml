@@ -2,9 +2,6 @@
 
   <include package="pyramid_zcml" />
 
-  <aclauthorizationpolicy />
-  <authtktauthenticationpolicy secret="fufn8fwefn" />
-
   <static
     name="static"
     path="mappp.me:static"

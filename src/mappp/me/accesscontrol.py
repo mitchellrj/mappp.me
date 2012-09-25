@@ -1,6 +1,5 @@
 from pyramid.decorator import reify
 from pyramid.request import Request
-from pyramid.security import unauthenticated_userid
 from pywurfl.algorithms import TwoStepAnalysis
 from wurfl import devices
 
@@ -16,17 +15,6 @@ def on_newrequest(event):
 
 
 class EnhancedRequest(Request):
-    @reify
-    def user(self):
-        # Use unauthenticated here, otherwise we go into a recursion loop
-        user_id = unauthenticated_userid(self)
-        user = None
-
-        if user_id is not None:
-            # Look up the actual user object
-            user = None
-
-        return user
 
     @reify
     def device(self):
