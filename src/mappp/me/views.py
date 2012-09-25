@@ -17,7 +17,8 @@ class DeviceCss(object):
 
     def __call__(self):
         self.request.response.content_type = "text/css"
-        self.request.response.cache_control = 'private max-age=3600 s-maxage=0'
+        self.request.response.cache_control = 'max-age=3600 s-maxage=3600'
+        self.request.response.vary = 'User-Agent, X-OperaMini-Phone-UA'
         return {'device': self.request.device}
 
 
