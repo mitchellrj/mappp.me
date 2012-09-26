@@ -17,6 +17,7 @@ requires = [
 
 test_requires = [
     'mock',
+    'unittest2',
     'zope.testbrowser[wsgi]'
 ]
 
