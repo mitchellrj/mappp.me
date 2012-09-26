@@ -1,5 +1,9 @@
 import os
 import sys
+try:
+    from UserDict import UserDict
+except ImportError:
+    from collections import UserDict
 
 from mappp.me.models import BaseSession, DefaultIdFactory
 
@@ -7,12 +11,12 @@ from mappp.me.models import BaseSession, DefaultIdFactory
 session = BaseSession
 
 
-class MemoryLimitedCache(dict):
+class MemoryLimitedCache(UserDict):
 
     def __init__(self, *args, **kwargs):
         self.__max_bytes = kwargs.pop('max_bytes', sys.maxint)
         self._last_access_order = []
-        dict.__init__(self, *args, **kwargs)
+        super(MemoryLimitedCache, self).__init__(self, *args, **kwargs)
 
     def _prune(self):
         while sys.getsizeof(self) > self.__max_bytes and \
@@ -27,16 +31,16 @@ class MemoryLimitedCache(dict):
     def __setitem__(self, key, value):
         self._prune()
         self._record_access(key)
-        return dict.__setitem__(self, key, value)
+        return super(MemoryLimitedCache, self).__setitem__(self, key, value)
 
     def __getitem__(self, key):
         self._record_access(key)
-        return dict.__getitem__(self, key)
+        return super(MemoryLimitedCache, self).__getitem__(self, key)
 
     def __delitem__(self, key):
         if key in self._last_access_order:
             self._last_access_order.remove(key)
-        return dict.__delitem__(self, key)
+        return super(MemoryLimitedCache, self).__delitem__(self, key)
 
 
 # memcache class
