@@ -16,7 +16,8 @@ requires = [
     ]
 
 test_requires = [
-    "mock",
+    'mock',
+    'zope.testbrowser[wsgi]'
 ]
 
 setup(name='mappp.me',
