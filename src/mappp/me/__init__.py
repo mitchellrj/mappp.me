@@ -16,8 +16,11 @@ def wurfl_monitor():
     last_mtime = time.time()
     while 1:
         try:
+            module_name = sys.modules.get('wurfl').__file__
+            if module_name[-4:] in ('.pyo', '.pyc'):
+                module_name = module_name[:-1]
             if 'wurfl' in sys.modules and \
-               os.stat(sys.modules.get('wurfl').__file__).st_mtime > last_mtime:
+               os.stat(module_name).st_mtime > last_mtime:
                 # only possible to do it this way as wurfl.py has no complex
                 # dependencies
                 del sys.modules['wurfl']
