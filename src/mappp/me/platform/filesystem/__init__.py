@@ -16,7 +16,7 @@ class MemoryLimitedCache(UserDict):
     def __init__(self, *args, **kwargs):
         self.__max_bytes = kwargs.pop('max_bytes', sys.maxint)
         self._last_access_order = []
-        super(MemoryLimitedCache, self).__init__(self, *args, **kwargs)
+        UserDict.__init__(self, *args, **kwargs)
 
     def _prune(self):
         while sys.getsizeof(self) > self.__max_bytes and \
@@ -31,16 +31,16 @@ class MemoryLimitedCache(UserDict):
     def __setitem__(self, key, value):
         self._prune()
         self._record_access(key)
-        return super(MemoryLimitedCache, self).__setitem__(self, key, value)
+        return UserDict.__setitem__(self, key, value)
 
     def __getitem__(self, key):
         self._record_access(key)
-        return super(MemoryLimitedCache, self).__getitem__(self, key)
+        return UserDict.__getitem__(self, key)
 
     def __delitem__(self, key):
         if key in self._last_access_order:
             self._last_access_order.remove(key)
-        return super(MemoryLimitedCache, self).__delitem__(self, key)
+        return UserDict.__delitem__(self, key)
 
 
 # memcache class
