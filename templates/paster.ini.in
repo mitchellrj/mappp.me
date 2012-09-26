@@ -9,7 +9,7 @@ default_locale_name = en
 mako.directories = mappp.me:templates
 
 mappp.me.platform = filesystem
-mappp.me.storage.location = ${storage-directory:paths}
+mappp.me.storage.location = ${:storage-path}
 mappp.me.storage.expires = 1800
 mappp.me.storage.gc_frequency = 300
 mappp.me.gmaps.api_key = ABQIAAAA_p6HAqTpVcWmgmWZvyWn4xTULY8PP-YFqTbT7yrRa97ORgL6kBSGxE_PgiVft_WMoxECKWJfqvDzKw

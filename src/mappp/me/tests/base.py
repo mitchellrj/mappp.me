@@ -5,7 +5,8 @@ from pyramid import testing
 import zope.testbrowser.wsgi
 
 
-TESTINI = os.getenv('TESTINI')
+# Can't use getenv because of the way this is set by testrunner.
+TESTINI = os.environ.get('TESTINI')
 
 
 class FunctionalLayer(object):
