@@ -11,26 +11,6 @@ import pyramid_beaker
 Settings = {}
 
 
-def wurfl_monitor():
-    """A daemon thread to reload the wurfl file if it changes on disk."""
-    last_mtime = time.time()
-    while 1:
-        try:
-            module_name = sys.modules.get('wurfl').__file__
-            if module_name[-4:] in ('.pyo', '.pyc'):
-                module_name = module_name[:-1]
-            if 'wurfl' in sys.modules and \
-               os.stat(module_name).st_mtime > last_mtime:
-                # only possible to do it this way as wurfl.py has no complex
-                # dependencies
-                del sys.modules['wurfl']
-        except:
-            if 'wurfl' not in sys.modules:
-                import wurfl
-
-        time.sleep(600)
-
-
 def main(global_config, **settings):
     """This function configures and returns a WSGI application."""
 
@@ -52,10 +32,5 @@ def main(global_config, **settings):
     config.set_session_factory(session_factory)
     config.set_request_factory(EnhancedRequest)
     config.add_subscriber(on_newrequest, 'pyramid.events.NewRequest')
-
-    # start up our wurfl monitor
-    t = threading.Thread(target=wurfl_monitor, name="mappp.me.wurfl.updater")
-    t.daemon = True
-    t.start()
 
     return config.make_wsgi_app()
